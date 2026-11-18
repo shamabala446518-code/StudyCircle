@@ -1,0 +1,402 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Resources - StudyCircle</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+     ========================= -->
+
+
+    <nav class="navbar">
+        <div class="logo">
+    <img src="{% static 'images/studycircle_logo.png' %}"
+         alt="StudyCircle Logo">
+</div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="/about/">About</a>
+            <a href="/study-groups/">StudyGroups</a>
+            <a href="/resources/">Resources</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/tasks/">Tasks</a>
+            <a href="/contact/">Contact</a>
+            <a href="/profile/">Profile</a>
+           
+ {% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">
+        Login
+    </a>
+
+{% endif %}
+           
+        </div>
+    </nav>
+
+<!-- =========================
+     RESOURCES PAGE
+     ========================= -->
+
+<section class="resources-page">
+
+
+    <!-- =========================
+         HERO
+         ========================= -->
+
+    <div class="resources-hero">
+
+
+        <!-- Left -->
+
+        <div class="resources-left">
+
+            <span class="resources-label">
+                📚 LEARN • ORGANIZE • GROW
+            </span>
+
+
+            <h1>
+                Everything You Need
+                <span>To Study Better</span>
+            </h1>
+
+
+            <p>
+                Access your study notes, manage daily tasks
+                and organize important learning resources
+                all in one place.
+            </p>
+
+
+            <!-- Small Highlights -->
+
+            <div class="resource-highlights">
+
+
+                <div class="resource-highlight">
+
+                    <div class="resource-icon">
+                        📖
+                    </div>
+
+                    <div>
+                        <b>Study Notes</b>
+                        <small>Learn & revise</small>
+                    </div>
+
+                </div>
+
+
+                <div class="resource-highlight">
+
+                    <div class="resource-icon">
+                        ✅
+                    </div>
+
+                    <div>
+                        <b>Tasks</b>
+                        <small>Stay organized</small>
+                    </div>
+
+                </div>
+
+
+                <div class="resource-highlight">
+
+                    <div class="resource-icon">
+                        📁
+                    </div>
+
+                    <div>
+                        <b>Files</b>
+                        <small>Keep resources</small>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Image -->
+
+        <div class="resources-image">
+
+            <img
+                src="{% static 'images/resourses_django.png' %}"
+                alt="StudyCircle learning">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         RESOURCE HEADING
+         ========================= -->
+
+    <div class="resources-heading">
+
+        <span>
+            STUDY RESOURCES
+        </span>
+
+        <h2>
+            Explore Your Learning Tools
+        </h2>
+
+        <p>
+            Everything you need to keep your study journey organized.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         RESOURCE CARDS
+         ========================= -->
+
+    <div class="resources-grid">
+
+
+        <!-- =========================
+             SHARED NOTES
+             ========================= -->
+
+        <div class="resource-card">
+
+            <div class="resource-card-icon notes-icon">
+                📚
+            </div>
+
+            <h2>
+                Shared Notes
+            </h2>
+
+            <p>
+                Access useful study notes and learning
+                materials for your subjects.
+            </p>
+
+            <a href="/notes/"
+               class="resource-btn">
+
+                View Notes 
+
+            </a>
+
+        </div>
+
+
+        <!-- =========================
+             TO-DO LISTS
+             ========================= -->
+
+        <div class="resource-card">
+
+            <div class="resource-card-icon tasks-icon">
+                ✅
+            </div>
+
+            <h2>
+                To-Do Lists
+            </h2>
+
+            <p>
+                Manage your daily study tasks and
+                stay organized and productive.
+            </p>
+
+            <a href="/tasks/"
+               class="resource-btn">
+
+                View Tasks 
+
+            </a>
+
+        </div>
+
+
+        <!-- =========================
+             FILE RESOURCES
+             ========================= -->
+
+        <div class="resource-card">
+
+            <div class="resource-card-icon files-icon">
+                📁
+            </div>
+
+            <h2>
+                File Resources
+            </h2>
+
+            <p>
+                Upload and share important study files
+                with your study community.
+            </p>
+
+            <a href="{% url 'upload_file' %}"
+               class="resource-btn">
+
+                Upload File 
+
+            </a>
+
+        </div>
+
+        <!-- EXAM QUESTIONS -->
+
+<div class="resource-card">
+
+    <div class="resource-card-icon notes-icon">
+        📝
+    </div>
+
+    <h2>Exam Questions</h2>
+
+    <p>
+        Prepare for your examinations with
+        important subject-wise questions
+        and answers.
+    </p>
+
+    <a href="/exam-questions/"
+       class="resource-btn">
+        Explore Questions 
+    </a>
+
+</div>
+
+
+    </div>
+
+
+    <!-- =========================
+         UPLOADED STUDY FILES
+         ========================= -->
+
+    <section class="uploaded-files">
+
+
+        <h2>
+            📂 Uploaded Study Files
+        </h2>
+
+
+        {% for file in files %}
+
+
+        <div class="file-item">
+
+
+            <div>
+
+                <h3>
+                    {{ file.title }}
+                </h3>
+
+
+                <small>
+                    Uploaded:
+                    {{ file.uploaded_at|date:"d M Y, h:i A" }}
+                </small>
+
+            </div>
+
+
+            <a href="{{ file.file.url }}"
+               target="_blank"
+               class="file-btn">
+
+                View / Download 
+
+            </a>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <p class="no-files">
+            No study files uploaded yet.
+        </p>
+
+
+        {% endfor %}
+
+
+    </section>
+
+
+</section>
+
+
+<!-- =========================
+     YOUR EXISTING FOOTER
+     ========================= -->
+
+<footer class="footer">
+
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>
+                StudyCircle
+            </h2>
+
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            shamabala1704@gmail.com
+        </p>
+
+        <p>
+            © 2026 StudyCircle. All rights reserved.
+        </p>
+
+    </div>
+
+
+</footer>
+
+
+</body>
+
+</html>

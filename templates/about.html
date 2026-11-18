@@ -1,0 +1,200 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>About StudyCircle</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+        <div class="logo">
+    <img src="{% static 'images/studycircle_logo.png' %}"
+         alt="StudyCircle Logo">
+</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="/about/">About</a>
+            <a href="/study-groups/">StudyGroups</a>
+            <a href="/resources/">Resources</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/tasks/">Tasks</a>
+            <a href="/contact/">Contact</a>
+            <a href="/profile/">Profile</a>
+             {% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">
+        Login
+    </a>
+
+{% endif %}
+           
+
+        </div>
+    </nav>
+
+
+<!-- ABOUT PAGE -->
+
+<section class="about-page">
+
+
+    <div class="about-heading">
+
+        <h1>
+            About StudyCircle
+        </h1>
+
+        <p>
+            A platform designed for students, by students.
+        </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+
+        <!-- LEFT -->
+
+        <div class="about-info">
+
+
+            <div class="about-item">
+
+                <div class="about-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h2>
+                        Our Mission
+                    </h2>
+
+                    <p>
+                        To create a collaborative and supportive
+                        learning environment where students can
+                        learn, share knowledge and grow together.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-item">
+
+                <div class="about-icon">
+                    ⚙️
+                </div>
+
+                <div>
+
+                    <h2>
+                        How It Works
+                    </h2>
+
+                    <p>
+                        Create or join a study group → Schedule
+                        sessions → Share resources → Track progress.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="about-team">
+
+            <img
+                src="{% static 'images/studycircle_hero_image.png' %}"
+                alt="Students studying together">
+
+
+            <div class="about-team-content">
+
+                <h2>
+                    Our Team
+                </h2>
+
+                <p>
+                    We are a group of passionate students who
+                    believe in the power of collaborative learning.
+                    StudyCircle helps students stay connected,
+                    organized and motivated.
+                </p>
+
+                <a href="/notes/"
+                   class="about-btn">
+
+                    Learn More 
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>
+                StudyCircle
+            </h2>
+
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            shamabala1704@gmail.com
+        </p>
+
+        <p>
+            © 2026 StudyCircle. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

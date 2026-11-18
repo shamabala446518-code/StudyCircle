@@ -1,0 +1,630 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Register - StudyCircle</title>
+
+    <style>
+
+        /* =========================
+           BASIC
+           ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f7ff,
+                    #eef4ff
+                );
+
+            color: #172554;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+           ========================= */
+
+        .register-container {
+
+            width: 100%;
+
+            max-width: 950px;
+
+            min-height: 560px;
+
+            background: white;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            display: grid;
+
+            grid-template-columns: 1fr 420px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(30, 41, 59, 0.12);
+
+            border: 1px solid #e8e5ff;
+        }
+
+
+        /* =========================
+           LEFT
+           ========================= */
+
+        .register-left {
+
+            padding: 45px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f7ff,
+                    #eef4ff
+                );
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            color: #172554;
+
+            margin-bottom: 25px;
+        }
+
+
+        .logo span {
+
+            color: #6c2ff2;
+        }
+
+
+        .register-badge {
+
+            display: inline-block;
+
+            width: fit-content;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            background: #ede9fe;
+
+            color: #6c2ff2;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .register-left h1 {
+
+            font-size: 42px;
+
+            line-height: 1.1;
+
+            color: #172554;
+
+            margin-bottom: 15px;
+        }
+
+
+        .register-left h1 span {
+
+            display: block;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #6c2ff2,
+                    #2563eb
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .register-left > p {
+
+            color: #64748b;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            max-width: 450px;
+        }
+
+
+        /* =========================
+           IMAGE
+           ========================= */
+
+        .register-image {
+
+            width: 100%;
+
+            max-width: 380px;
+
+            margin-top: 20px;
+
+            align-self: center;
+        }
+
+
+        .register-image img {
+
+            width: 100%;
+
+            height: auto;
+
+            display: block;
+        }
+
+
+        /* =========================
+           REGISTER CARD
+           ========================= */
+
+        .register-right {
+
+            padding: 35px 40px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .register-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ede9fe,
+                    #dbeafe
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .register-right h2 {
+
+            color: #172554;
+
+            font-size: 27px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .register-subtitle {
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================
+           ERROR
+           ========================= */
+
+        .error {
+
+            background: #fee2e2;
+
+            color: #b91c1c;
+
+            padding: 9px;
+
+            border-radius: 8px;
+
+            font-size: 11px;
+
+            margin-bottom: 10px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           FORM
+           ========================= */
+
+        label {
+
+            display: block;
+
+            color: #172554;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-top: 11px;
+
+            margin-bottom: 5px;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 10px 12px;
+
+            border: 1px solid #dbe2f0;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-size: 12px;
+
+            transition: 0.3s;
+        }
+
+
+        input:focus {
+
+            border-color: #6c2ff2;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(108, 47, 242, 0.10);
+        }
+
+
+        input::placeholder {
+
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           REGISTER BUTTON
+           ========================= */
+
+        .register-btn {
+
+            width: 100%;
+
+            margin-top: 19px;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #6c2ff2,
+                    #2563eb
+                );
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .register-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(108, 47, 242, 0.25);
+        }
+
+
+        /* =========================
+           LOGIN LINK
+           ========================= */
+
+        .login-text {
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-top: 16px;
+        }
+
+
+        .login-text a {
+
+            color: #6c2ff2;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        .login-text a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .register-container {
+
+                grid-template-columns: 1fr;
+
+                max-width: 500px;
+            }
+
+            .register-left {
+
+                padding: 30px;
+
+                text-align: center;
+            }
+
+            .register-badge {
+
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+            .register-image {
+
+                max-width: 260px;
+            }
+
+            .register-right {
+
+                padding: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="register-container">
+
+
+    <!-- LEFT -->
+
+    <div class="register-left">
+
+        <div class="logo">
+            Study<span>Circle</span>
+        </div>
+
+
+        <div class="register-badge">
+            ✨ JOIN STUDYCIRCLE
+        </div>
+
+
+        <h1>
+
+            Start Your
+            <span>Learning Journey.</span>
+
+        </h1>
+
+
+        <p>
+
+            Create your StudyCircle account and
+            connect with students, join study groups
+            and organize your learning.
+
+        </p>
+
+
+        <div class="register-image">
+
+            <img
+                src="{% static 'images/studycircle_hero_image.png' %}"
+                alt="StudyCircle students">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RIGHT -->
+
+    <div class="register-right">
+
+
+        <div class="register-icon">
+            👤
+        </div>
+
+
+        <h2>
+            Create Account
+        </h2>
+
+
+        <p class="register-subtitle">
+            Join StudyCircle today
+        </p>
+
+
+        {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <label>
+                Username
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Choose a username"
+                required>
+
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required>
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Create a password"
+                required>
+
+
+            <label>
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm your password"
+                required>
+
+
+            <button
+                type="submit"
+                class="register-btn">
+
+                Create Account →
+
+            </button>
+
+        </form>
+
+
+        <p class="login-text">
+
+            Already have an account?
+
+            <a href="/login/">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

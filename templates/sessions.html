@@ -1,0 +1,309 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Study Sessions - StudyCircle</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+     ========================= -->
+
+<nav class="navbar">
+        <div class="logo">
+    <img src="{% static 'images/studycircle_logo.png' %}"
+         alt="StudyCircle Logo">
+</div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="/about/">About</a>
+            <a href="/study-groups/">StudyGroups</a>
+            <a href="/resources/">Resources</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/tasks/">Tasks</a>
+            <a href="/contact/">Contact</a>
+            <a href="/profile/">Profile</a>
+             {% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">
+        Login
+    </a>
+
+{% endif %}
+           
+
+
+        </div>
+    </nav>
+
+
+<!-- =========================
+     STUDY SESSIONS PAGE
+     ========================= -->
+
+<section class="sessions-page">
+
+
+    <!-- Hero -->
+
+    <div class="sessions-hero">
+
+
+        <!-- Left -->
+
+        <div class="sessions-left">
+
+            <span class="sessions-label">
+                📅 PLAN • FOCUS • ACHIEVE
+            </span>
+
+
+            <h1>
+
+                Make Time
+                <span>For Learning</span>
+
+            </h1>
+
+
+            <p>
+
+                Schedule focused study sessions, manage your
+                learning time and stay consistent with your goals.
+
+            </p>
+
+
+            <div class="session-highlights">
+
+                <div class="session-highlight">
+
+                    <div class="session-icon">
+                        📅
+                    </div>
+
+                    <div>
+                        <b>Plan</b>
+                        <small>Schedule your time</small>
+                    </div>
+
+                </div>
+
+
+                <div class="session-highlight">
+
+                    <div class="session-icon">
+                        🎯
+                    </div>
+
+                    <div>
+                        <b>Focus</b>
+                        <small>Study without distractions</small>
+                    </div>
+
+                </div>
+
+
+                <div class="session-highlight">
+
+                    <div class="session-icon">
+                        🚀
+                    </div>
+
+                    <div>
+                        <b>Achieve</b>
+                        <small>Reach your goals</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Image -->
+
+        <div class="sessions-image">
+
+            <img
+                src="{% static 'images/session-django.png' %}"
+                alt="Study session">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SESSION HEADING
+         ========================= -->
+
+    <div class="sessions-heading">
+
+        <span>
+            UPCOMING SESSIONS
+        </span>
+
+        <h2>
+            Your Study Schedule
+        </h2>
+
+        <p>
+            Stay organized and make every study session count.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         DATABASE SESSIONS
+         ========================= -->
+
+    <div class="sessions-grid">
+
+        {% for session in sessions %}
+
+        <div class="session-card">
+
+
+            <div class="session-card-top">
+
+                <div class="session-card-icon">
+                    📚
+                </div>
+
+                <span class="session-status">
+                    Study Session
+                </span>
+
+            </div>
+
+
+            <h2>
+                {{ session.title }}
+            </h2>
+
+
+            <div class="session-detail">
+
+                <span>📅</span>
+
+                <div>
+                    <small>Date</small>
+                    <b>{{ session.date }}</b>
+                </div>
+
+            </div>
+
+
+            <div class="session-detail">
+
+                <span>⏰</span>
+
+                <div>
+                    <small>Time</small>
+                    <b>{{ session.time }}</b>
+                </div>
+
+            </div>
+
+
+            <div class="session-description">
+
+                <b>Description</b>
+
+                <p>
+                    {{ session.description }}
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        {% empty %}
+
+        <div class="no-sessions">
+
+            <div class="no-session-icon">
+                📅
+            </div>
+
+            <h2>
+                No Study Sessions Yet
+            </h2>
+
+            <p>
+                Your scheduled study sessions will appear here.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>
+                StudyCircle
+            </h2>
+
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            shamabala1704@gmail.com
+        </p>
+
+        <p>
+            © 2026 StudyCircle. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

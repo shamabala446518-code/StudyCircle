@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Groups - StudyCircle</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+</head>
+
+<body>
+<nav class="navbar">
+        <div class="logo">
+    <img src="{% static 'images/studycircle_logo.png' %}"
+         alt="StudyCircle Logo">
+</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="/about/">About</a>
+            <a href="/study-groups/">StudyGroups</a>
+            <a href="/resources/">Resources</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/tasks/">Tasks</a>
+            <a href="/contact/">Contact</a>
+            <a href="/profile/">Profile</a>
+             {% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">
+        Login
+    </a>
+
+{% endif %}
+           
+
+
+        </div>
+    </nav>
+            
+    </div>
+
+    
+    <!-- Study Groups Main Section -->
+
+<section class="study-groups-page">
+
+    <!-- Page Heading -->
+<div class="groups-hero">
+
+    <!-- Left Side -->
+    <div class="groups-left">
+
+        <div class="groups-heading">
+
+            <span class="groups-label">
+                👥 STUDY TOGETHER
+            </span>
+
+            <h1>
+                Find Your <span>Study Group</span>
+            </h1>
+
+            <p>
+                Discover and join groups based on your interests.
+                Learn together, share knowledge and achieve your academic goals.
+            </p>
+
+        </div>
+
+
+        <!-- Highlights -->
+
+        <div class="group-highlights">
+
+            <div class="highlight">
+
+                <div class="highlight-icon">
+                    👥
+                </div>
+
+                <div>
+                    <b>Collaborate</b>
+                    <small>Learn with students</small>
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <div class="highlight-icon">
+                    📚
+                </div>
+
+                <div>
+                    <b>Share</b>
+                    <small>Share knowledge</small>
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <div class="highlight-icon">
+                    🎯
+                </div>
+
+                <div>
+                    <b>Stay Focused</b>
+                    <small>Achieve your goals</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Right Side Image -->
+
+    <div class="groups-image">
+
+        <img
+            src="{% static 'images/studycircle_hero_image.png' %}"
+            alt="Study together"
+        >
+
+    </div>
+
+</div>
+
+    <!-- Groups -->
+    <div class="study-groups-grid">
+
+        {% for group in groups %}
+
+        <div class="study-group-card">
+
+            <div class="group-card-top">
+
+                <div class="group-icon">
+
+                    {% if forloop.counter == 1 %}
+                        🐍
+                    {% elif forloop.counter == 2 %}
+                        💻
+                    {% elif forloop.counter == 3 %}
+                        🧠
+                    {% else %}
+                        📚
+                    {% endif %}
+
+                </div>
+
+                <span class="group-type">
+                    Study Group
+                </span>
+
+            </div>
+
+
+            <h2>{{ group.name }}</h2>
+
+            <p class="group-description">
+                {{ group.description }}
+            </p>
+
+
+            <div class="member-info">
+                <span>👥</span>
+                <b>{{ group.members.count }}</b> Members
+            </div>
+
+
+            <!-- Existing Join Functionality -->
+
+            {% if user.is_authenticated %}
+
+                {% if user in group.members.all %}
+
+                    <button class="joined-group-btn" disabled>
+                        ✓ Joined
+                    </button>
+
+                {% else %}
+
+                    <a href="{% url 'join_group' group.id %}"
+                       class="join-group-btn">
+                        Join Group →
+                    </a>
+
+                {% endif %}
+
+            {% else %}
+
+                <a href="/login/" class="join-group-btn">
+                    Login to Join →
+                </a>
+
+            {% endif %}
+
+        </div>
+
+        {% empty %}
+
+        <div class="no-groups">
+
+            <div class="no-groups-icon">
+                📚
+            </div>
+
+            <h2>No Study Groups Yet</h2>
+
+            <p>
+                Study groups will appear here when they are created.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <div >
+            <h2>StudyCircle</h2>
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>shamabala1704@gmail.com</p>
+        <p>© 2026 StudyCircle. All rights reserved.</p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,389 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Study Tasks - StudyCircle</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+     ========================= -->
+
+<nav class="navbar">
+        <div class="logo">
+    <img src="{% static 'images/studycircle_logo.png' %}"
+         alt="StudyCircle Logo">
+</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="/about/">About</a>
+            <a href="/study-groups/">StudyGroups</a>
+            <a href="/resources/">Resources</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/tasks/">Tasks</a>
+            <a href="/contact/">Contact</a>
+            <a href="/profile/">Profile</a>
+             {% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">
+        Login
+    </a>
+
+{% endif %}
+           
+
+        </div>
+    </nav>
+
+<!-- =========================
+     TASKS PAGE
+     ========================= -->
+
+<section class="tasks-page">
+
+
+    <!-- HERO -->
+
+    <div class="tasks-hero">
+
+
+        <!-- LEFT -->
+
+        <div class="tasks-left">
+
+            <span class="tasks-label">
+                ✅ PLAN • TRACK • COMPLETE
+            </span>
+
+
+            <h1>
+
+                Study Tasks
+                <span>Stay Organized</span>
+
+            </h1>
+
+
+            <p>
+
+                Manage your daily study tasks, keep track
+                of your progress and build better study habits.
+
+            </p>
+
+
+            <!-- Highlights -->
+
+            <div class="task-highlights">
+
+
+                <div class="task-highlight">
+
+                    <div class="task-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <b>Plan</b>
+
+                        <small>
+                            Create your tasks
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="task-highlight">
+
+                    <div class="task-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <b>Track</b>
+
+                        <small>
+                            Monitor progress
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="task-highlight">
+
+                    <div class="task-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <b>Complete</b>
+
+                        <small>
+                            Achieve your goals
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT IMAGE -->
+
+        <div class="tasks-image">
+
+            <img
+                src="{% static 'images/task-django.png' %}"
+                alt="Study tasks">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         TASK HEADING
+         ========================= -->
+
+    <div class="tasks-heading">
+
+        <span>
+            YOUR TASKS
+        </span>
+
+        <h2>
+            Your Study Tasks
+        </h2>
+
+        <p>
+            Manage your daily study tasks and stay organized.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         TASK CARDS
+         ========================= -->
+
+    <div class="tasks-grid">
+
+
+        {% for task in tasks %}
+
+
+        <div class="task-card">
+
+
+            <!-- Card Top -->
+
+            <div class="task-card-top">
+
+
+                <div class="task-card-icon">
+                    📚
+                </div>
+
+
+                {% if task.completed %}
+
+                    <span class="task-status completed">
+                        Completed
+                    </span>
+
+                {% else %}
+
+                    <span class="task-status pending">
+                        Not Completed
+                    </span>
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <!-- Title -->
+
+            <h2>
+                {{ task.title }}
+            </h2>
+
+
+            <!-- Description -->
+
+            <p class="task-description">
+                {{ task.description }}
+            </p>
+
+
+
+            <!-- Bottom -->
+
+            <div class="task-bottom">
+
+
+                <div class="task-date">
+
+                    <span>
+                        📅
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Status
+                        </small>
+
+                        {% if task.completed %}
+
+                            <b>
+                                Completed
+                            </b>
+
+                        {% else %}
+
+                            <b>
+                                Pending
+                            </b>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Button -->
+
+                {% if task.completed %}
+
+                    <button
+                        class="completed-task-btn"
+                        disabled>
+
+                        ✓ Completed
+
+                    </button>
+
+                {% else %}
+
+                    <a
+                        href="{% url 'complete_task' task.id %}"
+                        class="complete-task-btn">
+
+                        Complete Task
+
+                    </a>
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="no-tasks">
+
+            <div class="no-task-icon">
+                📋
+            </div>
+
+            <h2>
+                No Tasks Yet
+            </h2>
+
+            <p>
+                Your study tasks will appear here.
+            </p>
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>
+                StudyCircle
+            </h2>
+
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            shamabala1704@gmail.com
+        </p>
+
+        <p>
+            © 2026 StudyCircle. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

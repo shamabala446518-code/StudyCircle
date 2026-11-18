@@ -1,0 +1,353 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Profile - StudyCircle</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+        <div class="logo">
+    <img src="{% static 'images/studycircle_logo.png' %}"
+         alt="StudyCircle Logo">
+</div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="/about/">About</a>
+            <a href="/study-groups/">StudyGroups</a>
+            <a href="/resources/">Resources</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/tasks/">Tasks</a>
+            <a href="/contact/">Contact</a>
+            <a href="/profile/">Profile</a>
+             {% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">
+        Login
+    </a>
+
+{% endif %}
+           
+
+
+        </div>
+    </nav>
+
+
+<!-- PROFILE PAGE -->
+
+<section class="profile-page">
+
+    <div class="profile-heading">
+
+        <h1>My Profile</h1>
+
+        <p>
+            Track your progress, view your circles and achievements.
+        </p>
+
+    </div>
+
+
+    <div class="profile-layout">
+
+
+        <!-- LEFT SIDEBAR -->
+
+        <div class="profile-sidebar">
+
+
+            <div class="profile-user">
+
+                <div class="profile-avatar">
+                    👩🏻‍💻
+                </div>
+
+                <h2>
+                    {{ user.get_full_name|default:user.username }}
+                </h2>
+
+                <p>
+                    {{ user.email }}
+                </p>
+
+                <span class="student-badge">
+                    Student
+                </span>
+
+            </div>
+
+
+            <div class="profile-menu">
+
+                <a href="#" class="active">
+                    👤 &nbsp; Overview
+                </a>
+
+                <a href="#">
+                    👥 &nbsp; My Circles
+                </a>
+
+                <a href="#">
+                    🔥 &nbsp; Study Streak
+                </a>
+
+                <a href="#">
+                    🏆 &nbsp; Achievements
+                </a>
+
+                <a href="#">
+                    ⚙️ &nbsp; Settings
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT CONTENT -->
+
+        <div class="profile-content">
+
+
+            <!-- STUDY STREAK -->
+
+            <div class="profile-top-grid">
+
+
+                <div class="streak-card">
+
+                    <h2>
+                        Study Streak
+                    </h2>
+
+                    <div class="streak-number">
+
+                        <span>🔥</span>
+
+                        <strong>{{profile.study_streak}}</strong>
+
+                        <small>Days</small>
+
+                    </div>
+
+                    <p>
+                        Keep going! 🔥
+                    </p>
+
+                </div>
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <div class="achievement-card">
+
+                    <h2>
+                        Achievements
+                    </h2>
+
+                    <div class="achievement-list">
+
+
+                        <div class="achievement">
+
+                            <div class="achievement-icon gold">
+                                🏆
+                            </div>
+
+                            <p>
+                                Consistent<br>
+                                Learner
+                            </p>
+
+                        </div>
+
+
+                        <div class="achievement">
+
+                            <div class="achievement-icon purple">
+                                🏅
+                            </div>
+
+                            <p>
+                                Group<br>
+                                Participant
+                            </p>
+
+                        </div>
+
+
+                        <div class="achievement">
+
+                            <div class="achievement-icon green">
+                                🏆
+                            </div>
+
+                            <p>
+                                Top<br>
+                                Contributor
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MY CIRCLES -->
+
+            <div class="circles-card">
+
+                <h2>
+                    My Circles
+                </h2>
+
+
+                <div class="circle-item">
+
+                    <div class="circle-icon">
+                        🌐
+                    </div>
+
+                    <div class="circle-info">
+
+                        <h3>
+                            Web Development
+                        </h3>
+
+                        <p>
+                            12 members • Public
+                        </p>
+
+                    </div>
+
+                    <a href="/study-groups/"
+                       class="view-btn">
+
+                        View
+
+                    </a>
+
+                </div>
+
+
+                <div class="circle-item">
+
+                    <div class="circle-icon">
+                        🐍
+                    </div>
+
+                    <div class="circle-info">
+
+                        <h3>
+                            Python Programming
+                        </h3>
+
+                        <p>
+                            8 members • Public
+                        </p>
+
+                    </div>
+
+                    <a href="/study-groups/"
+                       class="view-btn">
+
+                        View
+
+                    </a>
+
+                </div>
+
+
+                <div class="circle-item">
+
+                    <div class="circle-icon">
+                        🧩
+                    </div>
+
+                    <div class="circle-info">
+
+                        <h3>
+                            Data Structures & Algorithms
+                        </h3>
+
+                        <p>
+                            10 members • Private
+                        </p>
+
+                    </div>
+
+                    <a href="/study-groups/"
+                       class="view-btn">
+
+                        View
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>StudyCircle</h2>
+
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            shamabala1704@gmail.com
+        </p>
+
+        <p>
+            © 2026 StudyCircle. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

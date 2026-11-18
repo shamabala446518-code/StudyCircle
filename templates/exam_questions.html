@@ -1,0 +1,418 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Questions | StudyCircle</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #F8F7FF;
+            color: #172554;
+        }
+
+        
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 20px 10px;
+            background: linear-gradient(120deg, #6C2FF2, #2563EB);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 88%;
+            max-width: 1150px;
+            margin: 45px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #64748B;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* SUBJECT CARDS */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .subject-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(108,47,242,0.12);
+        }
+
+        .subject-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .subject-card h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .subject-card p {
+            color: #64748B;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .subject-card a {
+            display: inline-block;
+            background: linear-gradient(120deg, #6C2FF2, #2563EB);
+            color: white;
+            text-decoration: none;
+            padding: 10px 17px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* QUESTIONS SECTION */
+        .questions-section {
+            margin-top: 65px;
+        }
+
+        .subject-heading {
+            font-size: 23px;
+            margin: 35px 0 18px;
+            color: #6C2FF2;
+            scroll-margin-top: 25px;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+            border-left: 4px solid #6C2FF2;
+        }
+
+        .question-box h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .question-box p {
+            color: #64748B;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .answer {
+            margin-top: 10px;
+            padding: 12px;
+            background: #F3F0FF;
+            border-radius: 7px;
+            color: #334155;
+        }
+
+        .answer strong {
+            color: #6C2FF2;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Prepare for Your Exams 📚</h1>
+
+        <p>
+            Practice important questions, revise key topics
+            <br>
+            and prepare confidently for your examinations.
+        </p>
+    </section>
+
+    <!-- SUBJECTS -->
+    <div class="container">
+
+        <h2 class="section-title">Explore Subjects</h2>
+
+        <p class="section-description">
+            Select a subject to explore its practice questions.
+        </p>
+
+        <div class="subject-grid">
+
+            <div class="subject-card">
+                <div class="subject-icon">🐍</div>
+                <h3>Python Programming</h3>
+                <p>Practice Python basics, functions, loops and OOP concepts.</p>
+                <a href="#python">View Questions →</a>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">🗄️</div>
+                <h3>Database Management</h3>
+                <p>Revise DBMS concepts, SQL queries and database operations.</p>
+                <a href="#dbms">View Questions →</a>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">💻</div>
+                <h3>Web Technology</h3>
+                <p>Learn important concepts of HTML, CSS, JavaScript and web development.</p>
+                <a href="#web">View Questions →</a>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">📊</div>
+                <h3>Data Structures</h3>
+                <p>Revise arrays, linked lists, stacks, queues and searching.</p>
+                <a href="#ds">View Questions →</a>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">⚙️</div>
+                <h3>Software Engineering</h3>
+                <p>Practice software development models, testing and design concepts.</p>
+                <a href="#se">View Questions →</a>
+            </div>
+
+        </div>
+
+        <!-- QUESTIONS -->
+        <div class="questions-section">
+
+            <h2 class="section-title">Important Practice Questions</h2>
+
+            <p class="section-description">
+                These are sample revision questions to help you prepare.
+            </p>
+
+            <!-- PYTHON -->
+            <h3 class="subject-heading" id="python">🐍 Python Programming</h3>
+
+            <div class="question-box">
+                <h4>1. What is Python?</h4>
+                <p>Explain Python and write its important features.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    Python is a high-level, interpreted and general-purpose programming language.
+                    It has simple syntax and supports object-oriented programming.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>2. Explain the difference between List and Tuple.</h4>
+                <p>Write any four differences between List and Tuple.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    A List is mutable, which means its elements can be changed.
+                    A Tuple is immutable, which means its elements cannot be changed after creation.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>3. Explain if-else statements in Python.</h4>
+                <p>Describe conditional statements with an example.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    If-else statements are used to make decisions in a program.
+                    The if block runs when the condition is true; otherwise, the else block runs.
+                </div>
+            </div>
+
+            <!-- DBMS -->
+            <h3 class="subject-heading" id="dbms">🗄️ Database Management System</h3>
+
+            <div class="question-box">
+                <h4>1. What is DBMS?</h4>
+                <p>Explain the meaning and advantages of DBMS.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    DBMS stands for Database Management System.
+                    It is software used to create, store, manage and retrieve data from databases.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>2. What is SQL?</h4>
+                <p>Explain SQL and its uses.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    SQL stands for Structured Query Language.
+                    It is used to create, manage and manipulate relational databases.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>3. Explain Primary Key and Foreign Key.</h4>
+                <p>Describe the purpose of both keys in a database.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    A Primary Key uniquely identifies each record in a table.
+                    A Foreign Key connects one table with another table.
+                </div>
+            </div>
+
+            <!-- WEB TECHNOLOGY -->
+            <h3 class="subject-heading" id="web">💻 Web Technology</h3>
+
+            <div class="question-box">
+                <h4>1. What is HTML?</h4>
+                <p>Explain HTML and its basic structure.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    HTML stands for HyperText Markup Language.
+                    It is used to create the structure and content of web pages.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>2. What is CSS?</h4>
+                <p>Explain the role of CSS in web development.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    CSS stands for Cascading Style Sheets.
+                    It is used to style web pages by adding colors, layouts, fonts and spacing.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>3. What is JavaScript?</h4>
+                <p>Explain the importance of JavaScript.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    JavaScript is a programming language used to make web pages interactive and dynamic.
+                </div>
+            </div>
+
+            <!-- DATA STRUCTURES -->
+            <h3 class="subject-heading" id="ds">📊 Data Structures</h3>
+
+            <div class="question-box">
+                <h4>1. What is a Data Structure?</h4>
+                <p>Explain the importance of data structures.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    A data structure is a way of organizing and storing data
+                    so that it can be accessed and modified efficiently.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>2. Explain Stack and Queue.</h4>
+                <p>Write the difference between Stack and Queue.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    Stack follows LIFO (Last In, First Out).
+                    Queue follows FIFO (First In, First Out).
+                </div>
+            </div>
+
+            <!-- SOFTWARE ENGINEERING -->
+            <h3 class="subject-heading" id="se">⚙️ Software Engineering</h3>
+
+            <div class="question-box">
+                <h4>1. What is Software Engineering?</h4>
+                <p>Explain the meaning of software engineering.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    Software Engineering is the systematic approach to designing,
+                    developing, testing and maintaining software.
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h4>2. Explain the Waterfall Model.</h4>
+                <p>Describe the phases of the Waterfall Model.</p>
+                <div class="answer">
+                    <strong>Answer:</strong>
+                    The Waterfall Model is a sequential software development model.
+                    Its phases generally include requirements, design, implementation,
+                    testing, deployment and maintenance.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 StudyCircle. All Rights Reserved.</p>
+        <p>Learn Together | Grow Together</p>
+    </footer>
+
+</body>
+</html>

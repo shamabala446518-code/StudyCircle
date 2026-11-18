@@ -1,0 +1,267 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyCircle</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+   
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+    <img src="{% static 'images/studycircle_logo.png' %}"
+         alt="StudyCircle Logo">
+</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="/about/">About</a>
+            <a href="/study-groups/">StudyGroups</a>
+            <a href="/resources/">Resources</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/tasks/">Tasks</a>
+            <a href="/contact/">Contact</a>
+            <a href="/profile/">Profile</a>
+            
+            {% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">
+        Login
+    </a>
+
+{% endif %}
+           
+
+
+        </div>
+    </nav>
+
+    
+<main>
+
+    <!-- Hero Section -->
+    <section class="home-hero">
+
+        <div class="hero-text">
+
+            <span class="hero-badge">📚 Learn • Connect • Grow</span>
+
+            <h1>
+                Study Smarter.<br>
+                <span>Learn Together.</span>
+            </h1>
+
+            <p>
+                StudyCircle helps students create study groups,
+                share knowledge, manage tasks and schedule
+                productive study sessions.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/study-groups/" class="primary-btn">
+                    Explore Study Groups →
+                </a>
+
+                <a href="/sessions/" class="secondary-btn">
+                    View Sessions
+                </a>
+            </div>
+
+            <div class="hero-trust">
+                <span>✓ Study Groups</span>
+                <span>✓ Study Notes</span>
+                <span>✓ Study Sessions</span>
+            </div>
+
+        </div>
+
+
+        <!-- Study Illustration -->
+        <div class="study-visual">
+
+            <div class="visual-circle"></div>
+
+            <div class="study-card card-one">
+                <span class="card-icon">📖</span>
+                <div>
+                    <strong>Study Notes</strong>
+                    <small>Learn something new</small>
+                </div>
+            </div>
+
+            <div class="study-card card-two">
+                <span class="card-icon">👥</span>
+                <div>
+                    <strong>Study Group</strong>
+                    <small>Learn together</small>
+                </div>
+            </div>
+
+            <div class="study-card card-three">
+                <span class="card-icon">✅</span>
+                <div>
+                    <strong>Daily Tasks</strong>
+                    <small>Stay productive</small>
+                </div>
+            </div>
+
+            <div class="main-book">
+                📚
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="home-features">
+
+        <div class="section-heading">
+           
+
+            <h2>
+                Everything you need to
+                <span>study better</span>
+            </h2>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="modern-card">
+
+                <div class="feature-icon purple-icon">
+                    👥
+                </div>
+
+                <h3>Study Groups</h3>
+
+                <p>
+                    Join study groups and learn together
+                    with other students.
+                </p>
+
+                <a href="/study-groups/">
+                    Explore Groups 
+                </a>
+
+            </div>
+
+
+            <div class="modern-card">
+
+                <div class="feature-icon blue-icon">
+                    📚
+                </div>
+
+                <h3>Study Notes</h3>
+
+                <p>
+                    Access useful notes and learning
+                    resources for your studies.
+                </p>
+
+                <a href="/notes/">
+                    Read Notes 
+                </a>
+
+            </div>
+
+
+            <div class="modern-card">
+
+                <div class="feature-icon purple-icon">
+                    📅
+                </div>
+
+                <h3>Study Sessions</h3>
+
+                <p>
+                    Schedule focused sessions and
+                    manage your study time.
+                </p>
+
+                <a href="/sessions/">
+                    View Sessions 
+                </a>
+
+            </div>
+
+
+            <div class="modern-card">
+
+                <div class="feature-icon blue-icon">
+                    ✅
+                </div>
+
+                <h3>Study Tasks</h3>
+
+                <p>
+                    Manage your daily tasks and
+                    stay organized.
+                </p>
+
+                <a href="/tasks/">
+                    Manage Tasks 
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+
+        <div class="stat">
+            <h2>100%</h2>
+            <p>Focused Learning</p>
+        </div>
+
+        <div class="stat">
+            <h2>24/7</h2>
+            <p>Study Resources</p>
+        </div>
+
+        <div class="stat">
+            <h2>∞</h2>
+            <p>Learning Together</p>
+        </div>
+
+    </section>
+
+
+    
+
+</main>
+
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <div >
+            <h2>StudyCircle</h2>
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>shamabala1704@gmail.com</p>
+        <p>© 2026 StudyCircle. All rights reserved.</p>
+    </div>
+</footer>
+</html>
