@@ -2,193 +2,19 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Exam Questions | StudyCircle</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #F8F7FF;
-            color: #172554;
-        }
-
-        
-
-        /* HERO SECTION */
-        .hero {
-            text-align: center;
-            padding: 20px 10px;
-            background: linear-gradient(120deg, #6C2FF2, #2563EB);
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        /* MAIN CONTAINER */
-        .container {
-            width: 88%;
-            max-width: 1150px;
-            margin: 45px auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
-
-        .section-description {
-            text-align: center;
-            color: #64748B;
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-
-        /* SUBJECT CARDS */
-        .subject-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 22px;
-        }
-
-        .subject-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-            transition: 0.3s;
-        }
-
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(108,47,242,0.12);
-        }
-
-        .subject-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .subject-card h3 {
-            font-size: 19px;
-            margin-bottom: 10px;
-        }
-
-        .subject-card p {
-            color: #64748B;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        .subject-card a {
-            display: inline-block;
-            background: linear-gradient(120deg, #6C2FF2, #2563EB);
-            color: white;
-            text-decoration: none;
-            padding: 10px 17px;
-            border-radius: 7px;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        /* QUESTIONS SECTION */
-        .questions-section {
-            margin-top: 65px;
-        }
-
-        .subject-heading {
-            font-size: 23px;
-            margin: 35px 0 18px;
-            color: #6C2FF2;
-            scroll-margin-top: 25px;
-        }
-
-        .question-box {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
-            border-left: 4px solid #6C2FF2;
-        }
-
-        .question-box h4 {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .question-box p {
-            color: #64748B;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .answer {
-            margin-top: 10px;
-            padding: 12px;
-            background: #F3F0FF;
-            border-radius: 7px;
-            color: #334155;
-        }
-
-        .answer strong {
-            color: #6C2FF2;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #172554;
-            color: white;
-            text-align: center;
-            padding: 22px;
-            margin-top: 60px;
-            font-size: 14px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .navbar {
-                justify-content: center;
-            }
-
-            .nav-links {
-                justify-content: center;
-                gap: 14px;
-            }
-
-            .hero h1 {
-                font-size: 29px;
-            }
-
-            .container {
-                width: 92%;
-            }
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body>
+
+<body class="exam-page">
 
 
     <!-- HERO -->
@@ -409,10 +235,19 @@
     </div>
 
     <!-- FOOTER -->
-    <footer>
-        <p>© 2026 StudyCircle. All Rights Reserved.</p>
-        <p>Learn Together | Grow Together</p>
-    </footer>
-
+    <footer class="footer">
+    <div class="footer-content">
+        <div >
+            <h2>StudyCircle</h2>
+            <p>
+                Learn together, stay focused and achieve your academic goals.
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>shamabala1704@gmail.com</p>
+        <p>© 2026 StudyCircle. All rights reserved.</p>
+    </div>
+</footer>
 </body>
 </html>

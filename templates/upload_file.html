@@ -1,149 +1,58 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Upload File - StudyCircle</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f8f7ff, #eef2ff);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .upload-card {
-            width: 100%;
-            max-width: 550px;
-            background: white;
-            padding: 40px;
-            border-radius: 22px;
-            box-shadow: 0 12px 35px rgba(30, 41, 59, 0.12);
-        }
-
-        .upload-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #6c2ff2, #2563eb);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #172554;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #64748b;
-            margin-bottom: 30px;
-        }
-
-        label {
-            display: block;
-            color: #172554;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        input[type="text"],
-        input[type="file"] {
-            width: 100%;
-            padding: 13px;
-            margin-bottom: 22px;
-            border: 1px solid #dbeafe;
-            border-radius: 10px;
-            font-size: 15px;
-        }
-
-        input[type="file"] {
-            background: #f8f7ff;
-        }
-
-        .upload-btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(90deg, #6c2ff2, #2563eb);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .upload-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .back-btn {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #6c2ff2;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body>
+<body class="upload-page">
 
-<div class="upload-card">
+    <div class="upload-card">
 
-    <div class="upload-icon">📁</div>
+        <div class="upload-icon">📁</div>
 
-    <h1>Upload Study File</h1>
+        <h1>Upload Study File</h1>
 
-    <p class="subtitle">
-        Upload and share important study materials with your study community.
-    </p>
+        <p class="subtitle">
+            Upload and share important study materials with your study community.
+        </p>
 
-    <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
 
-        {% csrf_token %}
+            {% csrf_token %}
 
-        <label>File Title</label>
-        <input
-            type="text"
-            name="title"
-            placeholder="Enter file title"
-            required
-        >
+            <label>File Title</label>
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter file title"
+                required
+            >
 
-        <label>Select File</label>
-        <input
-            type="file"
-            name="file"
-            required
-        >
+            <label>Select File</label>
+            <input
+                type="file"
+                name="file"
+                required
+            >
 
-        <button type="submit" class="upload-btn">
-            Upload File →
-        </button>
+            <button type="submit" class="upload-btn">
+                Upload File →
+            </button>
 
-    </form>
+        </form>
 
-    <a href="{% url 'resources' %}" class="back-btn">
-        ← Back to Resources
-    </a>
+        <a href="{% url 'resources' %}" class="back-btn">
+            ← Back to Resources
+        </a>
 
-</div>
+    </div>
 
 </body>
 </html>
